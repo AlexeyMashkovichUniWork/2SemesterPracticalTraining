@@ -2,7 +2,7 @@ ifeq ($(COMPILER),)
 $(error Compiler not specified, this makefile is not being called correctly)
 endif
 
-build_all: build/$(COMPILER) exec_noopt exec_speed exec_size asm_speed asm_size
+build_all: exec_noopt exec_speed exec_size asm_speed asm_size
 
 build/$(COMPILER):
 	mkdir build/$(COMPILER)
@@ -17,10 +17,10 @@ asm_size: build/$(COMPILER)/size.s
 %_speed: CFLAGS = -O2
 %_size: CFLAGS = -Os
 
-build/$(COMPILER)/exec_%: build/optbench_exec.c
-	$(COMPILER) $(CFLAGS) -o $@ $^
+build/$(COMPILER)/exec_%: build/optbench_exec.c build/$(COMPILER)
+	$(COMPILER) $(CFLAGS) -o $@ $<
 
-build/$(COMPILER)/%.s: $(OPTBENCH)
-	$(COMPILER) -S $(CFLAGS) -o $@ $^
+build/$(COMPILER)/%.s: $(OPTBENCH) build/$(COMPILER)
+	$(COMPILER) -S $(CFLAGS) -o $@ $<
 
 .PHONY: build_all exec_noopt exec_speed exec_size asm_speed asm_size
