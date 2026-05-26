@@ -6,7 +6,7 @@ PATCH ?= patch
 
 OPTBENCH ?= optbench.c
 
-COMPILER ?= NULL
+export OPTBENCH
 
 build_all: build/optbench_exec.c build_gcc build_clang build_compcert
 
@@ -22,5 +22,17 @@ $(OPTBENCH):
 
 build:
 	mkdir build
+
+build_gcc: export COMPILER = $(GCC)
+build_gcc:
+	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
+
+build_clang: export COMPILER = $(CLANG)
+build_clang:
+	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
+
+build_compcert: export COMPILER = $(COMPCERT)
+build_compcert:
+	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
 
 .PHONY: build_all build_gcc build_clang build_compcert
