@@ -18,7 +18,7 @@ asm_size: build/$(COMPILER)/size.s
 %_size: CFLAGS = -Os
 
 build/$(COMPILER)/exec_%: build/optbench_exec.c build/$(COMPILER)
-	$(COMPILER) $(CFLAGS) -o $@ $<
+	$(COMPILER) $(CFLAGS) -DNO_ZERO_DIVIDE -o $@ $<
 
 build/$(COMPILER)/%.s: $(OPTBENCH) build/$(COMPILER)
 	$(COMPILER) -S $(CFLAGS) -o $@ $<
