@@ -23,6 +23,14 @@
 > }
 51a67
 > void execute_benchmark(void)
+91c107
+<                     an error\n");
+---
+>                     an error; ");
+161c177
+< 		printf("Common subexpression elimination\n");
+---
+> 		printf("Common subexpression elimination; ");
 298c314
 < }	/* Конец jump_compression */
 \ No newline at end of file
