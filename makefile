@@ -30,14 +30,17 @@ build:
 	mkdir build
 
 build_gcc: export COMPILER = $(GCC)
+build_gcc: export COMPILER_TYPE = GCC
 build_gcc:
 	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
 
 build_clang: export COMPILER = $(CLANG)
+build_clang: export COMPILER_TYPE = CLANG
 build_clang:
 	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
 
 build_compcert: export COMPILER = $(COMPCERT)
+build_compcert: export COMPILER_TYPE = COMPCERT
 build_compcert:
 	$(MAKE) -f secondary.mk $(MAKECMDGOALS)
 
