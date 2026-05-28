@@ -14,11 +14,14 @@ asm_speed: build/$(COMPILER)/speed.s
 asm_size: build/$(COMPILER)/size.s
 
 %_noopt: CFLAGS = -O0
+%_noopt: BUILD_TYPE = NOOPT
 %_speed: CFLAGS = -O2
+%_speed: BUILD_TYPE = SPEED
 %_size: CFLAGS = -Os
+%_size: BUILD_TYPE = SIZE
 
 build/$(COMPILER)/exec_%: build/optbench_exec.c | build/$(COMPILER)
-	$(COMPILER) $(CFLAGS) -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -o $@ $<
+	$(COMPILER) $(CFLAGS) -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -DBUILD_TYPE=\"$(BUILD_TYPE)\" -o $@ $<
 
 build/$(COMPILER)/%.s: $(OPTBENCH) | build/$(COMPILER)
 	$(COMPILER) -S $(CFLAGS) -o $@ $<

@@ -8,12 +8,16 @@
 > void   execute_benchmark(void);
 41a44
 > void   execute_benchmark();
-48a52,55
+48a52,59
 > #ifndef COMPILER_TYPE
 > #define COMPILER_TYPE "NULL"
 > #endif
 > 
-50a58,69
+> #ifndef BUILD_TYPE
+> #define BUILD_TYPE "NULL"
+> #endif
+> 
+50a62,73
 > {
 > 	/* ---------------------------- *
 > 	 A new main function, to measure
@@ -23,20 +27,20 @@
 > 	execute_benchmark();
 > 	clock_t end = clock();
 > 	double microseconds = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
-> 	printf("\n%s\n%f\n", COMPILER_TYPE, microseconds);
+> 	printf("\n%s\n%f\n", COMPILER_TYPE "_" BUILD_TYPE, microseconds);
 > 	return 0;
 > }
-51a71
+51a75
 > void execute_benchmark(void)
-91c111
+91c115
 <                     an error\n");
 ---
 >                     an error; ");
-161c181
+161c185
 < 		printf("Common subexpression elimination\n");
 ---
 > 		printf("Common subexpression elimination; ");
-298c318
+298c322
 < }	/* Конец jump_compression */
 \ No newline at end of file
 ---
