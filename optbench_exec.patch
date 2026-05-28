@@ -17,7 +17,7 @@
 > #define BUILD_TYPE "NULL"
 > #endif
 > 
-50a62,73
+50a62,76
 > {
 > 	/* ---------------------------- *
 > 	 A new main function, to measure
@@ -27,20 +27,23 @@
 > 	execute_benchmark();
 > 	clock_t end = clock();
 > 	double microseconds = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
-> 	printf("\n%s\n%f\n", COMPILER_TYPE "_" BUILD_TYPE, microseconds);
+> 	FILE * experiment_result_file = fopen(COMPILER_TYPE "_" BUILD_TYPE "_results.txt", "a+");
+> 	fprintf(experiment_result_file, "%f\n", microseconds);
+> 	fclose(experiment_result_file);
+> 	printf("\n");
 > 	return 0;
 > }
-51a75
+51a78
 > void execute_benchmark(void)
-91c115
+91c118
 <                     an error\n");
 ---
 >                     an error; ");
-161c185
+161c188
 < 		printf("Common subexpression elimination\n");
 ---
 > 		printf("Common subexpression elimination; ");
-298c322
+298c325
 < }	/* Конец jump_compression */
 \ No newline at end of file
 ---
