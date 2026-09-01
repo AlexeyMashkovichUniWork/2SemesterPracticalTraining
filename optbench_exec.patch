@@ -1,14 +1,16 @@
-16a17
+16a17,18
 > #include <time.h>
-33c34
+> #include "storage_function.h"
+33c35
 < int    ivector5[100];
 ---
 > int    ivector5[202];
-35a37
+35a38
 > void   execute_benchmark(void);
-41a44
+41a45
 > void   execute_benchmark();
-48a52,59
+48a53,61
+> 
 > #ifndef COMPILER_TYPE
 > #define COMPILER_TYPE "NULL"
 > #endif
@@ -17,7 +19,7 @@
 > #define BUILD_TYPE "NULL"
 > #endif
 > 
-50a62,76
+50a64,78
 > {
 > 	/* ---------------------------- *
 > 	 A new main function, to measure
@@ -33,17 +35,84 @@
 > 	printf("\n");
 > 	return 0;
 > }
-51a78
+51a80
 > void execute_benchmark(void)
-91c118
+58c87
+< 	printf("%d", j4);
+---
+> 	use_integer_variable(j4);
+61c90
+< 		printf("%d", i2);
+---
+> 		use_integer_variable(i2);
+64c93
+< 	printf("%d", j4);
+---
+> 	use_integer_variable(j4);
+67c96
+< 		printf("%d", i5);
+---
+> 		use_integer_variable(i5);
+90,91c119,120
+< 	printf("This compiler handles divide-by-zero as \
 <                     an error\n");
 ---
->                     an error; ");
-161c188
+> 	/*printf("This compiler handles divide-by-zero as \
+>                     an error; ");*/
+147c176
+< 	printf("%d", ivector[0]);
+---
+> 	use_integer_variable(ivector[0]);
+149c178
+< 	printf("%d", ivector[i2]);
+---
+> 	use_integer_variable(ivector[i2]);
+151c180
+< 	printf("%d", ivector[i2]);
+---
+> 	use_integer_variable(ivector[i2]);
+153c182
+< 	printf("%d", ivector[2]);
+---
+> 	use_integer_variable(ivector[2]);
+161c190,191
 < 		printf("Common subexpression elimination\n");
 ---
-> 		printf("Common subexpression elimination; ");
-298c325
+> 		// printf("Common subexpression elimination; ");
+> 		use_integer_variable((h3 + k3));
+164c194
+< 		printf("%d", m3);
+---
+> 		use_integer_variable(m3);
+166c196
+< 		printf("%d", g3);
+---
+> 		use_integer_variable(g3);
+176c206
+< 	printf("%d", ivector2[i4]);
+---
+> 	use_integer_variable(ivector2[i4]);
+231c261
+< 	printf("%d", k5);
+---
+> 	use_integer_variable(k5);
+245c275
+< 		printf("%d", k5);
+---
+> 		use_integer_variable(k5);
+249c279
+< 		printf("%d", k5);
+---
+> 		use_integer_variable(k5);
+266c296
+< 		printf("%d", ivector4[i]);
+---
+> 		use_integer_variable(ivector4[i]);
+291c321
+< 			printf("%d", j);
+---
+> 			use_integer_variable(j);
+298c328
 < }	/* Конец jump_compression */
 \ No newline at end of file
 ---
