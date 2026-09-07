@@ -7,6 +7,11 @@ ifneq ($(COMPILER),ccomp)
 NO_LTO = -fno-lto
 endif
 
+# GCC supports this flag, in Clang 19 it is a no-op
+ifneq ($(COMPILER),ccomp)
+	ASMFLAGS = -fverbose-asm
+endif
+
 build_all: exec_noopt exec_speed exec_size asm_speed asm_size
 
 build/$(COMPILER):
@@ -38,6 +43,6 @@ build/$(COMPILER)/exec_%: build/$(COMPILER)/tmp/exec_%.o build/$(COMPILER)/tmp/s
 	$(COMPILER) $(CFLAGS) $(NO_LTO) -o $@ $^
 
 build/$(COMPILER)/%.s: $(OPTBENCH) | build/$(COMPILER)
-	$(COMPILER) -S $(CFLAGS) -o $@ $<
+	$(COMPILER) -S $(CFLAGS) $(ASMFLAGS) -o $@ $<
 
 .PHONY: build_all exec_noopt exec_speed exec_size asm_speed asm_size
