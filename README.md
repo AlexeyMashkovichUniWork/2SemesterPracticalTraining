@@ -37,7 +37,11 @@ After sourcing the file, either put it into the root of this project or specify 
 The makefile assumes you have the `gcc`, `clang` and `ccomp` (CompCert) compiler binaries as well as the `patch` utility binary in your PATH environment variable. If that is not the case, specify the file path by setting the `GCC`, `CLANG`, `COMPCERT` and/or `PATCH` makefile variable(s) respectively.
 
 Then just run `make` and you will get the necessary executable and assembly files in the `build/<compiler name>` folder.
-    
+
+## License
+
+The only substantial parts of this repository (i.e. the patch file and the makefiles) are licensed under BSD-3-Clause. The original benchmark file is protected by copyright (see below) and as such not included in this repository.
+
 ## Acknowledgements
 
 The original article which the benchmark code is presented in was written by *Philip N. Hisley*.
