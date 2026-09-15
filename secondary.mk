@@ -12,7 +12,7 @@ ifneq ($(COMPILER),ccomp)
 	ASMFLAGS = -fverbose-asm
 endif
 
-build_all: exec_noopt exec_speed exec_size asm_speed asm_size
+build_all: exec_noopt exec_speed exec_size asm_speed asm_noopt
 
 build/$(COMPILER):
 	mkdir build/$(COMPILER)
@@ -24,7 +24,7 @@ exec_noopt: build/$(COMPILER)/exec_noopt
 exec_speed: build/$(COMPILER)/exec_speed
 exec_size: build/$(COMPILER)/exec_size
 asm_speed: build/$(COMPILER)/speed.s
-asm_size: build/$(COMPILER)/size.s
+asm_noopt: build/$(COMPILER)/noopt.s
 
 %_noopt: CFLAGS = -O0
 %_noopt: BUILD_TYPE = NOOPT

@@ -14,7 +14,7 @@ exec_noopt: build/optbench_exec.c build_gcc build_clang build_compcert
 exec_speed: build/optbench_exec.c build_gcc build_clang build_compcert
 exec_size: build/optbench_exec.c build_gcc build_clang build_compcert
 asm_speed: $(OPTBENCH) build_gcc build_clang build_compcert
-asm_size: $(OPTBENCH) build_gcc build_clang build_compcert
+asm_noopt: $(OPTBENCH) build_gcc build_clang build_compcert
 
 build/optbench_exec.c: build optbench_exec.patch $(OPTBENCH)
 	$(PATCH) $(OPTBENCH) optbench_exec.patch -o build/optbench_exec.c
