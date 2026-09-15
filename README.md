@@ -5,6 +5,8 @@ This repository is comprised of the files necessary to measure the comparative p
 
 The benchmark was initially intended to be compiled to assembly code to be analyzed by hand; however this repository provides a patch file that makes it a reasonable *executable* benchmark - the resulting executable files measure pure CPU time without any unnecessary kernel / routine / IO overhead.
 
+## Features
+
 For each of the 3 compilers, 5 types of files are compiled:
 
 - Patched executable file, no optimizations
@@ -13,7 +15,11 @@ For each of the 3 compilers, 5 types of files are compiled:
 - Assembly code, no optimizations
 - Assembly code, optimized for speed
 
-## Software used
+The executable files are patched to remove all I/O operations (`printf` in particular), instead replacing all instances of `printf` with a dummy function that is explicitly not optimized away (thanks to Link-Time Optimization being disabled). There are also no divisions by zero present.
+
+In addition to this, the executable file automatically measures its own performance - it runs 10000 iterations of the benchmark, measures the total time they took in microseconds, and saves it to a file in the current working directory. The executables can be run multiple times to accumulate the results in their corresponding files to get accurate performance measurements.
+
+## Dependencies
 
 Compilers/toolchains being benchmarked in this suite:
 
@@ -40,7 +46,7 @@ Then just run `make` and you will get the necessary executable and assembly file
 
 ## License
 
-The only substantial parts of this repository (i.e. the patch file and the makefiles) are licensed under BSD-3-Clause. The original benchmark file is protected by copyright (see below) and as such not included in this repository.
+The only substantial parts of this repository (i.e. the patch file, the makefiles and the dummy function) are licensed under BSD-3-Clause. The original benchmark file is protected by copyright (see below) and as such not included in this repository.
 
 ## Acknowledgements
 
