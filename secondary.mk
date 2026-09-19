@@ -26,23 +26,23 @@ exec_size: build/$(COMPILER)/exec_size
 asm_speed: build/$(COMPILER)/speed.s
 asm_noopt: build/$(COMPILER)/noopt.s
 
-%_noopt: CFLAGS = -O0
+%_noopt: OPTFLAGS = -O0
 %_noopt: BUILD_TYPE = NOOPT
-%_speed: CFLAGS = -O2
+%_speed: OPTFLAGS = -O2
 %_speed: BUILD_TYPE = SPEED
-%_size: CFLAGS = -Os
+%_size: OPTFLAGS = -Os
 %_size: BUILD_TYPE = SIZE
 
 build/$(COMPILER)/tmp/exec_%.o: build/optbench_exec.c | build/$(COMPILER)/tmp
-	$(COMPILER) -c $(CFLAGS) $(NO_LTO) -I "$(CURDIR)" -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -DBUILD_TYPE=\"$(BUILD_TYPE)\" -o $@ $<
+	$(COMPILER) -c $(OPTFLAGS) $(CFLAGS) $(NO_LTO) -I "$(CURDIR)" -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -DBUILD_TYPE=\"$(BUILD_TYPE)\" -o $@ $<
 
 build/$(COMPILER)/tmp/%.o: %.c | build/$(COMPILER)/tmp
-	$(COMPILER) -c $(CFLAGS) -o $@ $<
+	$(COMPILER) -c $(OPTFLAGS) $(CFLAGS) -o $@ $<
 
 build/$(COMPILER)/exec_%: build/$(COMPILER)/tmp/exec_%.o build/$(COMPILER)/tmp/storage_function.o
 	$(COMPILER) $(CFLAGS) $(NO_LTO) -o $@ $^
 
 build/$(COMPILER)/%.s: $(OPTBENCH) | build/$(COMPILER)
-	$(COMPILER) -S $(CFLAGS) $(ASMFLAGS) -o $@ $<
+	$(COMPILER) -S $(OPTFLAGS) $(CFLAGS) $(ASMFLAGS) -o $@ $<
 
 .PHONY: build_all exec_noopt exec_speed exec_size asm_speed asm_size
