@@ -13,15 +13,11 @@
 156a164,165
 > 		printf("%d", m3);
 > 		printf("%d", g3);
-164c173
-< 	for (i4 = 0; i4 <= max_vector; i4++)
----
-> 	for (i4 = 0; i4 <= max_vector; i4++){
 166c175,176
 < 
 ---
-> 	printf("%d", ivector2[i4]);
-> }
+> 	for (i4 = 0; i4 <= max_vector; i4++)
+> 		printf("%d", ivector2[i4]);
 219a230
 > 	printf("%d", k5);
 233a245
