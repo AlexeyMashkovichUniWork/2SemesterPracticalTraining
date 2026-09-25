@@ -34,9 +34,9 @@ asm_noopt: build/$(COMPILER)/noopt.s
 %_size: BUILD_TYPE = SIZE
 
 build/$(COMPILER)/tmp/exec_%.o: build/optbench_exec.c | build/$(COMPILER)/tmp
-	$(COMPILER) -c $(OPTFLAGS) $(CFLAGS) $(NO_LTO) -I "$(CURDIR)" -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -DBUILD_TYPE=\"$(BUILD_TYPE)\" -o $@ $<
+	$(COMPILER) -c $(OPTFLAGS) $(CFLAGS) $(NO_LTO) -I "$(CURDIR)/src" -DNO_ZERO_DIVIDE -DCOMPILER_TYPE=\"$(COMPILER_TYPE)\" -DBUILD_TYPE=\"$(BUILD_TYPE)\" -o $@ $<
 
-build/$(COMPILER)/tmp/%.o: %.c | build/$(COMPILER)/tmp
+build/$(COMPILER)/tmp/%.o: src/%.c | build/$(COMPILER)/tmp
 	$(COMPILER) -c $(OPTFLAGS) $(CFLAGS) -o $@ $<
 
 build/$(COMPILER)/exec_%: build/$(COMPILER)/tmp/exec_%.o build/$(COMPILER)/tmp/storage_function.o

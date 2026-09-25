@@ -16,8 +16,8 @@ exec_size: build/optbench_exec.c build_gcc build_clang build_compcert
 asm_speed: $(OPTBENCH) build_gcc build_clang build_compcert
 asm_noopt: $(OPTBENCH) build_gcc build_clang build_compcert
 
-build/optbench_exec.c: build optbench_exec.patch $(OPTBENCH)
-	$(PATCH) $(OPTBENCH) optbench_exec.patch -o build/optbench_exec.c
+build/optbench_exec.c: build src/optbench_exec.patch $(OPTBENCH)
+	$(PATCH) $(OPTBENCH) src/optbench_exec.patch -o build/optbench_exec.c
 
 $(OPTBENCH):
 	$(error This repository requires the optbench.c file, which is \
