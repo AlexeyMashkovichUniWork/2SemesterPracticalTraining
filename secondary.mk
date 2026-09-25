@@ -42,7 +42,7 @@ build/$(COMPILER)/tmp/%.o: src/%.c | build/$(COMPILER)/tmp
 build/$(COMPILER)/exec_%: build/$(COMPILER)/tmp/exec_%.o build/$(COMPILER)/tmp/storage_function.o
 	$(COMPILER) $(CFLAGS) $(NO_LTO) -o $@ $^
 
-build/$(COMPILER)/%.s: $(OPTBENCH) | build/$(COMPILER)
+build/$(COMPILER)/%.s: build/optbench.c | build/$(COMPILER)
 	$(COMPILER) -S $(OPTFLAGS) $(CFLAGS) $(ASMFLAGS) -o $@ $<
 
 .PHONY: build_all exec_noopt exec_speed exec_size asm_speed asm_size

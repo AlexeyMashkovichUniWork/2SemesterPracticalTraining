@@ -13,11 +13,14 @@ build_all: build/optbench_exec.c build_gcc build_clang build_compcert
 exec_noopt: build/optbench_exec.c build_gcc build_clang build_compcert
 exec_speed: build/optbench_exec.c build_gcc build_clang build_compcert
 exec_size: build/optbench_exec.c build_gcc build_clang build_compcert
-asm_speed: $(OPTBENCH) build_gcc build_clang build_compcert
-asm_noopt: $(OPTBENCH) build_gcc build_clang build_compcert
+asm_speed: build/optbench.c build_gcc build_clang build_compcert
+asm_noopt: build/optbench.c build_gcc build_clang build_compcert
 
-build/optbench_exec.c: build src/optbench_exec.patch $(OPTBENCH)
-	$(PATCH) $(OPTBENCH) src/optbench_exec.patch -o build/optbench_exec.c
+build/optbench.c: build src/optbench.patch $(OPTBENCH)
+	$(PATCH) $(OPTBENCH) src/optbench.patch -o build/optbench.c
+
+build/optbench_exec.c: build src/optbench_exec.patch build/optbench.c
+	$(PATCH) build/optbench.c src/optbench_exec.patch -o build/optbench_exec.c
 
 $(OPTBENCH):
 	$(error This repository requires the optbench.c file, which is \

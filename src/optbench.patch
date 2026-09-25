@@ -1,0 +1,49 @@
+57a58
+> 	printf("%d", j4);
+59a61
+> 		printf("%d", i2);
+61a64
+> 	printf("%d", j4);
+63a67
+> 		printf("%d", i5);
+142a147
+> 	printf("%d", ivector[0]);
+143a149
+> 	printf("%d", ivector[i2]);
+144a151
+> 	printf("%d", ivector[i2]);
+145a153
+> 	printf("%d", ivector[2]);
+155a164
+> 		printf("%d", m3);
+156a166
+> 		printf("%d", g3);
+164c174
+< 	for (i4 = 0; i4 <= max_vector; i4++)
+---
+> 	for (i4 = 0; i4 <= max_vector; i4++){
+166c176,177
+< 
+---
+> 	printf("%d", ivector2[i4]);
+> }
+219a231
+> 	printf("%d", k5);
+230c242
+< 	for (i = 0; i < 5; i++)
+---
+> 	for (i = 0; i < 5; i++) {
+232c244,247
+< 	for (i = 0; i < 5; i++)
+---
+> 
+> 		printf("%d", k5);
+> 	}
+> 	for (i = 0; i < 5; i++) {
+233a249,250
+> 		printf("%d", k5);
+> 	}
+248a266
+> 		printf("%d", ivector4[i]);
+272a291
+> 			printf("%d", j);
