@@ -17,7 +17,7 @@ For each of the 3 compilers, 5 types of files are compiled:
 
 The executable files are patched to remove all I/O operations (`printf` in particular), instead replacing all instances of `printf` with a dummy function that is explicitly not optimized away (thanks to Link-Time Optimization being disabled). There are also no divisions by zero present.
 
-In addition to this, the executable file automatically measures its own performance - it runs 10000 iterations of the benchmark, measures the total time they took in microseconds, and saves it to a file in the current working directory. The executables can be run multiple times to accumulate the results in their corresponding files to get accurate performance measurements.
+In addition to this, the executable file automatically measures its own performance - it runs 100000 iterations of the benchmark, measures the total time they took in microseconds, and saves it to a file in the current working directory. The executables can be run multiple times to accumulate the results in their corresponding files to get accurate performance measurements.
 
 ## Dependencies
 
