@@ -7,13 +7,14 @@ The benchmark was initially intended to be compiled to assembly code to be analy
 
 ## Features
 
-For each of the 3 compilers, 5 types of files are compiled:
+For each of the 3 compilers, 6 types of files are compiled:
 
 - Patched executable file, no optimizations
 - Patched executable file, optimized for speed
 - Patched executable file, optimized for size
 - Assembly code, no optimizations
 - Assembly code, optimized for speed
+- Assembly code, optimized for size
 
 The executable files are patched to remove all I/O operations (`printf` in particular), instead replacing all instances of `printf` with a dummy function that is explicitly not optimized away (thanks to Link-Time Optimization being disabled). There are also no divisions by zero present.
 
