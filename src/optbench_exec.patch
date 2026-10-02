@@ -55,13 +55,7 @@
 < 		printf("%d", i5);
 ---
 > 		use_integer_variable(i5);
-90,91c121,122
-< 	printf("This compiler handles divide-by-zero as \
-<                     an error\n");
----
-> 	/*printf("This compiler handles divide-by-zero as \
->                     an error; ");*/
-150,152c181,183
+155,157c186,188
 < 	printf("%d", ivector[0]);
 < 	printf("%d", ivector[i2]);
 < 	printf("%d", ivector[2]);
@@ -69,30 +63,30 @@
 > 	use_integer_variable(ivector[0]);
 > 	use_integer_variable(ivector[i2]);
 > 	use_integer_variable(ivector[2]);
-160c191,192
+165c196,197
 < 		printf("Common subexpression elimination\n");
 ---
 > 		// printf("Common subexpression elimination; ");
 > 		use_integer_variable((h3 + k3));
-164,165c196,197
+169,170c201,202
 < 		printf("%d", m3);
 < 		printf("%d", g3);
 ---
 > 		use_integer_variable(m3);
 > 		use_integer_variable(g3);
-176c208
+181c213
 < 		printf("%d", ivector2[i4]);
 ---
 > 		use_integer_variable(ivector2[i4]);
-230c262
+235c267
 < 	printf("%d", k5);
 ---
 > 	use_integer_variable(k5);
-245c277
+250c282
 < 	printf("%d", i5);
 ---
 > 	use_integer_variable(i5);
-261,263c293,295
+266,268c298,300
 < 	printf("%d", ivector4[0]);
 < 	printf("%d", ivector4[3]);
 < 	printf("%d", ivector4[5]);
@@ -100,11 +94,11 @@
 > 	use_integer_variable(ivector4[0]);
 > 	use_integer_variable(ivector4[3]);
 > 	use_integer_variable(ivector4[5]);
-287c319
+292c324
 < 			printf("%d", j);
 ---
 > 			use_integer_variable(j);
-294c326
+299c331
 < }	/* Конец jump_compression */
 \ No newline at end of file
 ---

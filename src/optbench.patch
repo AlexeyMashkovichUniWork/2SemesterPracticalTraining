@@ -6,31 +6,46 @@
 > 	printf("%d", j4);
 63a67
 > 		printf("%d", i5);
-145a150,152
+82a87
+> #ifndef NO_INTEGER_ZERO_DIVIDE
+83a89,90
+> #endif
+> #ifndef NO_FLOATING_POINT_ZERO_DIVIDE
+84a92
+> #endif
+86,87c94,95
+< 	printf("This compiler handles divide-by-zero as \
+<                     an error\n");
+---
+> 	/*printf("This compiler handles divide-by-zero as \
+>                     an error; ");*/
+88a97
+> 
+145a155,157
 > 	printf("%d", ivector[0]);
 > 	printf("%d", ivector[i2]);
 > 	printf("%d", ivector[2]);
-156a164,165
+156a169,170
 > 		printf("%d", m3);
 > 		printf("%d", g3);
-166c175,176
+166c180,181
 < 
 ---
 > 	for (i4 = 0; i4 <= max_vector; i4++)
 > 		printf("%d", ivector2[i4]);
-219a230
+219a235
 > 	printf("%d", k5);
-233a245
+233a250
 > 	printf("%d", i5);
-247c259
+247c264
 < 	for (i = 0; i < 6; i++) {
 ---
 > 	for (i = 0; i < 6; i++)
-249c261,263
+249c266,268
 < 	}
 ---
 > 	printf("%d", ivector4[0]);
 > 	printf("%d", ivector4[3]);
 > 	printf("%d", ivector4[5]);
-272a287
+272a292
 > 			printf("%d", j);
